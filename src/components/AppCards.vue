@@ -27,10 +27,11 @@ created() {
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-12" v-for="card in store.cards" :key="card.id">
+                <div class="box-cards" v-for="card in store.cards" :key="card.id">
                     <div class="cards">
                         <img :src="card.card_images[0].image_url" :alt="card.name" />
-                        <div>{{ card.name }}</div>
+                        <div class="text-cards">{{ card.name }}</div>
+                        <div class="type-cards">{{ card.race }}</div>
                     </div>
                 </div>
             </div>
@@ -43,17 +44,36 @@ created() {
 
     .container {
         background-color: #fff;
-        height: 400px;
     }
 
-    .cards {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 200px;
+    .box-cards {
+        width: calc(100% / 5 - 20px);
+        margin: 10px;
+        .cards {
+            margin: 10px;
+            background-color: #D48F38;
+    
+            img {
+                width: 200px;
+            }
 
-        img {
-            width: 150px;
+            .text-cards {
+                text-align: center;
+                padding: 10px 0;
+                color: #fff;
+                width: 100%;
+                font-weight: 700;
+                font-size: 11px;
+                text-transform: uppercase;
+            }
+
+            .type-cards {
+                text-align: center;
+                padding: 10px 0;
+                font-size: 12px;
+            }
         }
+
     }
+
 </style>
