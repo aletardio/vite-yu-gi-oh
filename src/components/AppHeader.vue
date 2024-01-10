@@ -1,6 +1,9 @@
 <script>
 export default {
-    name: 'AppHeader'
+    name: 'AppHeader',
+    props: {
+        title: String
+    }
 }
 </script>
 <template lang="">
@@ -10,7 +13,7 @@ export default {
                 <div class="col-12 d-flex flex-row align-items-center py-4">
                     <img src="/img/logo.png" alt="Yu-Gi-Oh" srcset="">
                     <h1 class="ps-4">
-                        Yu-Gi-Oh Api
+                        {{ title }}
                     </h1>
                 </div>
             </div>

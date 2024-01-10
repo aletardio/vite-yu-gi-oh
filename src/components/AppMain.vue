@@ -1,11 +1,17 @@
 <script>
+
+import AppCards from './AppCards.vue';
+
 export default {
-    name: 'AppMain'
+    name: 'AppMain',
+    components:{
+        AppCards
+    }
 }
 </script>
 <template lang="">
     <main>
-        
+        <AppCards />
     </main>
 </template>
 <style lang="scss" scoped>
