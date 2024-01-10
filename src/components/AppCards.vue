@@ -27,9 +27,10 @@ created() {
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-12" v-for="card, index in store.cards :key="index">
+                <div class="col-12" v-for="card in store.cards" :key="card.id">
                     <div class="cards">
-                        <img :src="" alt="">
+                        <img :src="card.card_images[0].image_url" :alt="card.name" />
+                        <div>{{ card.name }}</div>
                     </div>
                 </div>
             </div>
@@ -43,5 +44,16 @@ created() {
     .container {
         background-color: #fff;
         height: 400px;
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 200px;
+
+        img {
+            width: 150px;
+        }
     }
 </style>
