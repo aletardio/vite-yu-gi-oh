@@ -16,7 +16,7 @@ data(){
             'Inzektor'
         ]
         }
-}
+},
 }
 </script>
 <template lang="">
