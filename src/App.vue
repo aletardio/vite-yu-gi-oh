@@ -2,13 +2,15 @@
 
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
+import AppLoader from './components/AppLoader.vue';
 
 import axios from 'axios';
 import { store } from './store.js'
 export default {
   components: {
     AppHeader,
-    AppMain
+    AppMain,
+    AppLoader
   },
   data() {
     return {
@@ -20,6 +22,7 @@ export default {
         axios.get(this.store.endpoint).then((response) => {
             console.log(response.data.data);
             this.store.cards = response.data.data;
+            store.loading = false;
         })
     }
   },
@@ -30,8 +33,11 @@ export default {
 </script>
 <template lang="">
   <div>
-    <AppHeader title="Yu-Gi-Oh Api" />
-    <AppMain />
+    <AppLoader v-if = "store.loading" />
+    <div v-else>
+      <AppHeader title="Yu-Gi-Oh Api" />
+      <AppMain />
+    </div>
   </div>
 </template>
 <style lang="scss">
