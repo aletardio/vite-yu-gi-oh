@@ -26,7 +26,7 @@ export default {
             border-radius: 50%;
             display: inline-block;
             box-sizing: border-box;
-            animation: rotation 1s linear infinite;
+            animation: rotation 5s linear infinite;
         }
 }
 </style>

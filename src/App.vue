@@ -1,21 +1,24 @@
 <script>
 
 import AppHeader from './components/AppHeader.vue';
-import AppMain from './components/AppMain.vue';
 import AppLoader from './components/AppLoader.vue';
+import AppCards from './components/AppCards.vue';
 
 import axios from 'axios';
 import { store } from './store.js'
 export default {
   components: {
     AppHeader,
-    AppMain,
-    AppLoader
+    AppLoader,
+    AppCards
   },
   data() {
     return {
       store
     }
+  },
+  created() {
+    this.getCardsList();
   },
   methods: {
     getCardsList(){
@@ -25,18 +28,15 @@ export default {
             store.loading = false;
         })
     }
-  },
-  created() {
-    this.getCardsList();
   }
 }
 </script>
 <template lang="">
   <div>
-    <AppLoader v-if = "store.loading" />
+    <AppLoader v-if="store.loading" />
     <div v-else>
       <AppHeader title="Yu-Gi-Oh Api" />
-      <AppMain />
+      <AppCards />
     </div>
   </div>
 </template>
