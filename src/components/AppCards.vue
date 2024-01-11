@@ -15,7 +15,7 @@ data() {
     <div class="space">
         <div class="container">
             <div class="row">
-                <div class="box-cards" v-for="card in store.cards" :key="card.id">
+                <div class="box-cards" v-for="card in this.store.cards" :key="card.id">
                     <div class="cards">
                         <img :src="card.card_images[0].image_url" :alt="card.name" />
                         <div class="text-cards">{{ card.name }}</div>

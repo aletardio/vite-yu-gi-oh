@@ -24,21 +24,33 @@ export default {
   },
   methods: {
     getCardsList(){
-        axios.get(this.store.endpoint).then((response) => {
+
+      alert('test');
+      let apiUrl = this.store.endpoint;
+
+      if(this.store.type !== '') {
+        apiUrl += `&archetype=${this.store.type}`;
+      }
+
+        axios.get(apiUrl).then((response) => {
             console.log(response.data.data);
             this.store.cards = response.data.data;
-            store.loading = false;
+            this.store.loading = false;
         })
-    }
+    },
   }
 }
 </script>
 <template lang="">
   <div>
-    <AppLoader v-if="store.loading" />
+    <!-- Loading -->
+    <AppLoader v-if="this.store.loading" />
     <div v-else>
+      <!-- Header -->
       <AppHeader title="Yu-Gi-Oh Api" />
-      <AppSelect />
+      <!-- Type Cards -->
+      <AppSelect @type_selected = "getCardsList" />
+      <!-- Cards list -->
       <AppCards />
     </div>
   </div>

@@ -5,18 +5,18 @@ import { store } from '../store.js';
 
 export default {
     name:'AppSelect',
-    data(){
+data(){
         return {
             store, 
             typeCards: [
-            'Armed Dragon',
             'Neos',
+            'Armed Dragon',
             'Chaos Phantom',
             'Sacred Beast',
             'Inzektor'
         ]
         }
-    }
+}
 }
 </script>
 <template lang="">
@@ -25,7 +25,7 @@ export default {
             <div class="row">
                 <div class="col-12">
                     <label for="filter" class="control-label">Type</label>
-                    <select class="form-select" id="filter" v-model="store.type">
+                    <select class="form-select" id="filter" v-model="this.store.type" @change="$emit('type_selected')">
                         <option value="" selected>Select type</option>
                         <option v-for="type, index in typeCards" :key="index" :value="type">
                             {{ type }}
@@ -44,7 +44,7 @@ export default {
 
     }
     .form-select {
-      width: 15%;
-      margin-top: 10px;
+        width: 15%;
+         margin-top: 10px;
     }
 </style>
