@@ -3,6 +3,7 @@
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 
+import axios from 'axios';
 import { store } from './store.js'
 export default {
   components: {
@@ -13,6 +14,17 @@ export default {
     return {
       store
     }
+  },
+  methods: {
+    getCardsList(){
+        axios.get(this.store.endpoint).then((response) => {
+            console.log(response.data.data);
+            this.store.cards = response.data.data;
+        })
+    }
+  },
+  created() {
+    this.getCardsList();
   }
 }
 </script>
