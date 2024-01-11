@@ -3,6 +3,7 @@
 import AppHeader from './components/AppHeader.vue';
 import AppLoader from './components/AppLoader.vue';
 import AppCards from './components/AppCards.vue';
+import AppSelect from './components/AppSelect.vue';
 
 import axios from 'axios';
 import { store } from './store.js'
@@ -10,7 +11,8 @@ export default {
   components: {
     AppHeader,
     AppLoader,
-    AppCards
+    AppCards,
+    AppSelect
   },
   data() {
     return {
@@ -36,6 +38,7 @@ export default {
     <AppLoader v-if="store.loading" />
     <div v-else>
       <AppHeader title="Yu-Gi-Oh Api" />
+      <AppSelect />
       <AppCards />
     </div>
   </div>
