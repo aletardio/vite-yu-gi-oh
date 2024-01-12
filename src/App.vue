@@ -26,17 +26,13 @@ export default {
     getCardsList(){
 
       let apiUrl = this.store.endpoint;
-      console.log(this.store.endpoint);
 
       if(this.store.type !== '') {
         apiUrl += `&archetype=${this.store.type}`;
       }
 
-      console.log(this.store.endpoint);
-
         axios.get(apiUrl).then((response) => {
             this.store.loading = true;
-            console.log(response.data.data);
             this.store.cards = response.data.data;
             this.store.loading = false;
         })

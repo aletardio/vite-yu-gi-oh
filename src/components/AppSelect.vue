@@ -1,6 +1,6 @@
 <script>
 
-
+import axios from 'axios';
 import { store } from '../store.js';
 
 export default {
@@ -8,15 +8,19 @@ export default {
 data(){
         return {
             store, 
-            typeCards: [
-            'Neos',
-            'Armed Dragon',
-            'Chaos Phantom',
-            'Sacred Beast',
-            'Inzektor'
-        ]
+            typeCards: [],
         }
 },
+created() {
+    this.getArchetypesList()
+},
+methods:{
+    getArchetypesList(){
+        axios.get(store.apiArchetypeUrl).then((response) => {
+            this.typeCards = response.data.slice(0,5);
+        })
+    }
+}
 }
 </script>
 <template lang="">
@@ -26,10 +30,7 @@ data(){
                 <div class="col-12">
                     <label for="filter" class="control-label">Type</label>
                     <select class="form-select" id="filter" v-model="this.store.type" @change="$emit('type_selected')">
-                        <option value="" selected>Select type</option>
-                        <option v-for="type, index in typeCards" :key="index" :value="type">
-                            {{ type }}
-                        </option>
+                        <option :value="archetype.archetype_name" v-for="archetype, index in typeCards" :key="index">{{ archetype.archetype_name}}</option>
                     </select>
                 </div>
             </div>
