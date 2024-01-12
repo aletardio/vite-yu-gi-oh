@@ -17,7 +17,7 @@ created() {
 methods:{
     getArchetypesList(){
         axios.get(store.apiArchetypeUrl).then((response) => {
-            this.typeCards = response.data.slice(0,5);
+            this.typeCards = response.data.slice(10,35);
         })
     }
 }
